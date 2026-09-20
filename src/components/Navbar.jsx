@@ -185,7 +185,7 @@ const NavLinks = ({ links }) => {
           // transisi hanya opacity — left/width/borderRadius dikontrol RAF
           transition:    'opacity 180ms ease',
         }}
-        className="bg-blue-100 dark:bg-blue-950/60"
+        className="bg-amber-100/80 dark:bg-amber-950/60"
       />
 
       {links.map((link) => (
@@ -193,7 +193,7 @@ const NavLinks = ({ links }) => {
           key={link.name}
           href={link.href}
           role="listitem"
-          className="relative z-10 px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-150 font-medium rounded-lg select-none"
+          className="relative z-10 px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-150 font-medium rounded-lg select-none text-sm"
           onMouseEnter={(e) => moveTo(e.currentTarget)}
           onFocus={(e)      => moveTo(e.currentTarget)}   // keyboard nav
         >
@@ -270,7 +270,7 @@ const Navbar = () => {
               alt="Logo GPdI Agape"
               className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-200"
             />
-            <span className="text-lg font-bold text-gray-900 dark:text-white">GPdI Agape</span>
+            <span className="text-xl font-serif font-bold text-gray-900 dark:text-white tracking-wide">GPdI Agape</span>
           </a>
 
           {/* Desktop Nav — magic hover pill */}
@@ -281,24 +281,25 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle Theme"
             >
-              <i className={`bi ${isDark ? 'bi-sun-fill' : 'bi-moon-fill'} text-xl text-gray-600 dark:text-gray-300`}></i>
+              <i className={`bi ${isDark ? 'bi-sun-fill' : 'bi-moon-fill'} text-lg text-gray-600 dark:text-gray-300`}></i>
             </button>
 
             {/* CTA Button */}
             <a
               href="#contact"
-              className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg transition-colors text-sm"
+              className="hidden md:inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold px-5 py-2 rounded-xl transition-all shadow-sm hover:shadow-glow-gold text-xs sm:text-sm"
             >
-              Hubungi
+              <i className="bi bi-chat-heart text-xs"></i>
+              Layanan Doa
             </a>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="md:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               <i className={`bi ${isMobileMenuOpen ? 'bi-x-lg' : 'bi-list'} text-2xl text-gray-600 dark:text-gray-300`}></i>
             </button>
@@ -315,7 +316,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                className="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-amber-50 dark:hover:bg-amber-950/30 hover:text-amber-600 dark:hover:text-amber-400 rounded-xl transition-colors font-medium text-sm"
               >
                 {link.name}
               </a>
@@ -323,9 +324,10 @@ const Navbar = () => {
             <a
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-center bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+              className="block text-center bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold px-4 py-2.5 rounded-xl text-sm shadow-sm"
             >
-              Hubungi Kami
+              <i className="bi bi-chat-heart mr-1.5"></i>
+              Layanan Doa & Konseling
             </a>
           </div>
         </div>

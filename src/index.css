@@ -19,13 +19,25 @@
   .text-gradient {
     @apply bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent;
   }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-amber-400 via-gold-300 to-yellow-500 bg-clip-text text-transparent;
+  }
   
   .card-minimal {
     @apply bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-800 transition-colors duration-300;
   }
 
+  .card-sacred {
+    @apply bg-white dark:bg-gray-900/90 border border-amber-200/60 dark:border-amber-500/20 shadow-md transition-all duration-300;
+  }
+
   .btn-primary {
     @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg;
+  }
+
+  .btn-gold {
+    @apply bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-sm hover:shadow-glow-gold;
   }
 
   .btn-secondary {

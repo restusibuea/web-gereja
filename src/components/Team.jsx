@@ -17,14 +17,14 @@ const TeamCard = ({ member }) => {
     position:   'absolute',
     inset:      0,
     background: isDark
-      ? 'linear-gradient(to top, rgba(5,5,15,0.94) 0%, rgba(5,5,15,0.65) 45%, transparent 100%)'
-      : 'linear-gradient(to top, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.70) 45%, transparent 100%)',
+      ? 'linear-gradient(to top, rgba(5,5,15,0.95) 0%, rgba(5,5,15,0.70) 50%, transparent 100%)'
+      : 'linear-gradient(to top, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.75) 50%, transparent 100%)',
     opacity:    hovered ? 1 : 0,
     transition: 'opacity 0.32s ease',
     display:    'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    padding:    '1.1rem',
+    padding:    '1.2rem',
     pointerEvents: 'none',
   }
 
@@ -33,16 +33,16 @@ const TeamCard = ({ member }) => {
 
   return (
     <div
-      style={{ position: 'relative', borderRadius: '1rem', width: '100%', height: '100%', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
-      className="shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden bg-gray-300 dark:bg-gray-800"
+      style={{ position: 'relative', borderRadius: '1.25rem', width: '100%', height: '100%', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
+      className="shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden bg-gray-200 dark:bg-gray-800 border border-gray-100 dark:border-gray-800"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {/* Leader badge */}
       {member.isLeader && (
         <div style={{ position: 'absolute', top: 12, right: 12, zIndex: 30 }}
-          className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center shadow-md">
-          <i className="bi bi-star-fill text-white text-xs"></i>
+          className="w-8 h-8 bg-gradient-to-tr from-amber-500 to-amber-400 rounded-full flex items-center justify-center shadow-lg text-white">
+          <i className="bi bi-star-fill text-xs"></i>
         </div>
       )}
 
@@ -59,19 +59,27 @@ const TeamCard = ({ member }) => {
           }}
         />
 
-        {/* Hover overlay — ayat */}
+        {/* Hover overlay — ayat firman dengan font serif */}
         <div style={overlay}>
+          <div className="mb-2">
+            <i className={`bi bi-quote text-lg ${isDark ? 'text-amber-400' : 'text-amber-600'}`}></i>
+          </div>
           <p style={{
-            color: isDark ? '#e2e8f0' : '#111827',
-            fontSize: '0.72rem', fontStyle: 'italic',
-            lineHeight: 1.65, marginBottom: '0.45rem',
+            color: isDark ? '#f1f5f9' : '#0f172a',
+            fontSize: '0.78rem',
+            fontStyle: 'italic',
+            fontFamily: '"Playfair Display", Georgia, serif',
+            lineHeight: 1.6,
+            marginBottom: '0.5rem',
           }}>
             "{member.verse}"
           </p>
           <span style={{
-            color: isDark ? '#93c5fd' : '#1d4ed8',
-            fontSize: '0.62rem', fontWeight: 700,
-            textTransform: 'uppercase', letterSpacing: '0.06em',
+            color: isDark ? '#fbbf24' : '#b45309',
+            fontSize: '0.68rem',
+            fontWeight: 700,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
           }}>
             — {member.reference}
           </span>
@@ -80,13 +88,13 @@ const TeamCard = ({ member }) => {
 
       {/* Info bar — terpisah di bawah foto, tinggi tetap */}
       <div
-        style={{ flexShrink: 0, height: 64 }}
+        style={{ flexShrink: 0, height: 68 }}
         className="flex flex-col justify-center px-4 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800"
       >
-        <p className="text-gray-900 dark:text-white font-bold text-base leading-tight truncate">
+        <p className="text-gray-900 dark:text-white font-serif font-bold text-base leading-tight truncate">
           {member.name}
         </p>
-        <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm mt-0.5 truncate">
+        <p className="text-amber-700 dark:text-amber-400 font-medium text-xs sm:text-sm mt-0.5 truncate">
           {member.role}
         </p>
       </div>
@@ -212,21 +220,22 @@ const Team = () => {
   const displayed = showAll ? teamMembers : teamMembers.slice(0, 6)
 
   return (
-    <section id="team" className="pt-10 pb-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="team" className="pt-12 pb-24 bg-gray-50/50 dark:bg-gray-900/40 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-full px-4 py-2 mb-4">
-            <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">
-              Gembala, Pemimpin, & Pelayan
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center space-x-2 bg-amber-50 dark:bg-amber-950/30 border border-amber-300/60 dark:border-amber-500/30 rounded-full px-4 py-1.5 mb-4">
+            <i className="bi bi-people text-amber-600 dark:text-amber-400"></i>
+            <span className="text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-semibold tracking-wide uppercase">
+              Gembala, Pemimpin & Pelayan
             </span>
           </div>
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-3">
             Tim Pelayanan Kami
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-            Pemimpin rohani yang berdedikasi melayani dengan kasih dan integritas
+          <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Hamba-hamba Tuhan yang berdedikasi melayani jemaat dengan kasih, ketulusan, dan integritas.
           </p>
         </div>
 
